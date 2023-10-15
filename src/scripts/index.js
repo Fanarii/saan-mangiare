@@ -13,6 +13,8 @@ import swRegister from './utils/swRegister'
 const mainContent = document.querySelector('#main-content')
 
 const app = new App(mainContent)
+const jam = new Date()
+console.log(jam)
 
 window.addEventListener('hashchange', () => {
   app.renderPege()
