@@ -5,6 +5,9 @@ const contentInitiator = {
   async init () {
     try {
       const data = await this._getData()
+      const searchBar = this._getSerchBar()
+
+      this._handleSearch(searchBar)
       this._renderCards(data)
     } catch (error) {
       console.log(error)
@@ -21,18 +24,16 @@ const contentInitiator = {
     }
   },
 
-  async _getDetailData (id) {
-    try {
-      const detailData = await axios.get(`https://restaurant-api.dicoding.dev/${id}`)
-      return detailData
-    } catch (error) {
-      console.log(error)
-    }
+  _getSerchBar () {
+    const element = document.querySelector('content-section')
+    const searchBar = element.shadowRoot.querySelector('.search')
+    return searchBar
   },
 
   async _renderCards (data) {
     const contentSection = document.querySelector('content-section')
     const wrapper = contentSection.shadowRoot.querySelector('.card-wrapper')
+    wrapper.innerHTML = ''
 
     data.forEach((item) => {
       const card = document.createElement('button')
@@ -43,6 +44,13 @@ const contentInitiator = {
       })
 
       wrapper.appendChild(card)
+    })
+  },
+
+  _handleSearch (searchBar) {
+    searchBar.addEventListener('keyup', async () => {
+      const response = await axios.get(`https://restaurant-api.dicoding.dev/search?q=${searchBar.value}`)
+      this._renderCards(response.data.restaurants)
     })
   }
 }

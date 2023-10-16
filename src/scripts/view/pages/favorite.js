@@ -11,7 +11,9 @@ const Favorite = {
     const contentSection = document.querySelector('content-section')
     const wrapper = contentSection.shadowRoot.querySelector('.card-wrapper')
     const title = contentSection.shadowRoot.querySelector('.title')
+    const searchBar = contentSection.shadowRoot.querySelector('.search')
 
+    searchBar.style.display = 'none'
     title.innerText = 'Favorited Restaurants'
     templateCreator.favoriteTemplate(wrapper)
   }
