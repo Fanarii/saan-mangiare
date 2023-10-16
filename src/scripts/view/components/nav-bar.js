@@ -12,6 +12,13 @@ class NavBar extends HTMLElement {
   _initNavbar () {
     const hamburger = this.shadowDOM.querySelector('.hamburger')
     const menu = this.shadowDOM.querySelector('nav ul')
+    const btn = this.shadowDOM.querySelectorAll('a')
+
+    btn.forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show')
+      })
+    })
 
     hamburger.addEventListener('click', () => {
       menu.classList.toggle('show')
@@ -22,29 +29,37 @@ class NavBar extends HTMLElement {
     this.shadowDOM.innerHTML = `
     <style>
       nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        background-color: #59dfed;
+      }
+
+      .nav-wrapper {
         display: flex;
         color: white;
         justify-content: space-between;
-        background-color: #59dfed;
         align-items: center;
         height: 60px;
         padding: 0 20px;
       }
       
-      nav ul {
+      ul {
         display: flex;
         list-style-type: none;
         gap: 15px;
       }
       
-      nav ul li a {
+      ul li a {
         text-decoration: none;
         color: white;
         padding: 13px;
         font-size: 18px;
       }
       
-      nav ul li {
+      ul li {
         display: flex;
       }
       
@@ -69,7 +84,7 @@ class NavBar extends HTMLElement {
           display: flex;
         }
       
-        nav ul {
+        ul {
           display: none; 
           flex-direction: column;
           background-color: #59dfed;
@@ -80,29 +95,38 @@ class NavBar extends HTMLElement {
           padding: 0;
           z-index: 1;
         }
-      
-        nav ul.show {
+        
+        ul.show {
           display: flex;
         }
       
-        nav ul li {
+        ul li {
+          display flex;
           font-size: 23px;
+          align-items: center;
+          justify-content: center;
+        }
+
+        li a {
+          width: max-content;
         }
       }
     </style>
     
       <nav>
+        <div class="nav-wrapper">
           <h1>Saan Mangiare</h1>
           <button class="hamburger">
             <div></div>
             <div></div>
             <div></div>
           </button>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#/favorite">Favorite</a></li>
-          <li><a href="https://github.com/Fanarii">About Us</a></li>
-        </ul>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#/favorite">Favorite</a></li>
+            <li><a href="https://github.com/Fanarii">About Us</a></li>
+          </ul>
+        </div>
       </nav>
     `
   }

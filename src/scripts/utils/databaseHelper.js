@@ -1,6 +1,7 @@
 import FavoriteRestaurantIdb from '../../public/data/favorite'
 import getRestaurant from './getRestaurant'
 import templateCreator from './templateCreator'
+import Detail from '../view/pages/detail'
 
 const DatabaseHelper = {
   async render (id, button) {
@@ -16,11 +17,21 @@ const DatabaseHelper = {
     }
   },
 
-  async addFavorite (id, button) {
+  async handleFavorite (id, button) {
     try {
-      const restaurant = await getRestaurant(id)
-      await FavoriteRestaurantIdb.addRestaurant(restaurant)
+      const restaruantExist = await FavoriteRestaurantIdb.getRestaurant(id)
+      console.log(restaruantExist)
+      if (restaruantExist) {
+        console.log(restaruantExist)
+        await FavoriteRestaurantIdb.deleteRestaurant(id)
+      } else {
+        console.log('djwoajdow')
+        const restaurant = await getRestaurant(id)
+        await FavoriteRestaurantIdb.addRestaurant(restaurant)
+      }
+
       this.render(id, button)
+      Detail.render()
     } catch (error) {
       console.error('Error in addFavorite:', error)
     }

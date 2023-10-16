@@ -25,6 +25,7 @@ main {
   background-color: #E3E3E3;
   min-width: 100%;
   min-height: calc(100vh - 100px);
+  margin-top: 60px;
 }
 
 footer {
@@ -57,4 +58,8 @@ footer {
 
 h1 {
   margin: 10px;
+}
+
+.likeButtonContainer {
+  border: 0;
 }
