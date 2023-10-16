@@ -15,6 +15,8 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner()
     const restaurant = await getRestaurant(url.id)
 
+    console.log(restaurant)
+
     const element = document.querySelector('detail-section')
     const wrapper = element.shadowRoot.querySelector('.restaurant-wrapper')
     wrapper.innerHTML = templateCreator.detailTemplate(restaurant)

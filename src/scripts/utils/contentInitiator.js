@@ -13,7 +13,7 @@ const contentInitiator = {
 
   async _getData () {
     try {
-      const response = await axios.get('../data/DATA.json')
+      const response = await axios.get('https://restaurant-api.dicoding.dev/list')
       return response.data.restaurants
     } catch (error) {
       console.log(error)
@@ -21,7 +21,16 @@ const contentInitiator = {
     }
   },
 
-  _renderCards (data) {
+  async _getDetailData (id) {
+    try {
+      const detailData = await axios.get(`https://restaurant-api.dicoding.dev/${id}`)
+      return detailData
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async _renderCards (data) {
     const contentSection = document.querySelector('content-section')
     const wrapper = contentSection.shadowRoot.querySelector('.card-wrapper')
 
