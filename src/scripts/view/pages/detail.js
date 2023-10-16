@@ -7,13 +7,14 @@ const Detail = {
   async render () {
     return `
       <detail-section></detail-section>
-      <div id="likeButtonContainer"></div>
+      <button id="likeButtonContainer"></button>
     `
   },
 
   async afterRender () {
     const url = UrlParser.parseActiveUrlWithoutCombiner()
     const restaurant = await getRestaurant(url.id)
+
     const element = document.querySelector('detail-section')
     const wrapper = element.shadowRoot.querySelector('.restaurant-wrapper')
     wrapper.innerHTML = templateCreator.detailTemplate(restaurant)
@@ -21,8 +22,8 @@ const Detail = {
     const likeButtonContainer = document.querySelector('#likeButtonContainer')
     DatabaseHelper.render(url.id, likeButtonContainer)
 
-    likeButtonContainer.addEventListener('click', () => {
-      DatabaseHelper.addFavorite(url.id)
+    likeButtonContainer.addEventListener('click', async () => {
+      await DatabaseHelper.handleFavorite(url.id, likeButtonContainer)
     })
   }
 }
