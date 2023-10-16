@@ -107,7 +107,7 @@ class ContentSection extends HTMLElement {
       
     <section class="content">
         <h1 class="title">Discover Caffe & Restaurants</h1>
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Search..." class="search">
         <div class="card-wrapper">
         </div>
     </section>
