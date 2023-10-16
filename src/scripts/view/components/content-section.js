@@ -68,6 +68,18 @@ class ContentSection extends HTMLElement {
       .card:focus {
         transform: scale(1.1)
       }
+
+      input {
+        flex: 1;
+        border: none;
+        outline: none;
+        width: 80%;
+        min-height: 20px;
+        padding: 5px;
+        max-width: 700px;
+        margin: 10px;
+        border-radius: 8px;
+      }
     
       @media screen and (min-width: 476px) {
         .card-wrapper {
@@ -95,6 +107,7 @@ class ContentSection extends HTMLElement {
       
     <section class="content">
         <h1 class="title">Discover Caffe & Restaurants</h1>
+        <input type="text" placeholder="Search...">
         <div class="card-wrapper">
         </div>
     </section>

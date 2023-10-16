@@ -19,14 +19,13 @@ class DetailSection extends HTMLElement {
 
     .restaurant-wrapper {
         display: flex;
+        flex-direction: column;
         width: 100%;
         padding: 10px;
-        max-width: 90%;
         background-color: #f7f7f7;
         border: 1px solid #ccc;
         border-radius: 5px;
         justify-content: start;
-        margin-top: 30px;
       }
       
       .info, .desc {
@@ -35,7 +34,6 @@ class DetailSection extends HTMLElement {
       
       .title {
         text-align: left;
-        align-self: center;
       }
       
       .title h2 {
@@ -62,6 +60,40 @@ class DetailSection extends HTMLElement {
         font-size: 16px;
         line-height: 1.5;
       }
+
+      .categories {
+        display: flex;
+      }
+
+      .category {
+        background-color: #E3E3E3;
+        border-radius: 8px;
+        padding: 5px;
+        margin-top: 0;
+        margin: 5px;
+        margin-left: 0;
+      }
+
+      .customer-reviews {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-top: 20px;
+      }
+      
+      .review {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      
+      .review-name {
+        font-weight: bold;
+      }
+      
+      .review-date {
+        color: #777;
+      }
+      
       
       @media screen and (max-width: 768px) {
         .restaurant-wrapper {

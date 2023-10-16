@@ -42,7 +42,7 @@ module.exports = {
       ]
     }),
     new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './service-worker.js',
+      swDest: './service-worker.js'
     })
   ]
 }
