@@ -100,7 +100,7 @@ class NavBar extends HTMLElement {
           </button>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#">Favorite</a></li>
+          <li><a href="#/favorite">Favorite</a></li>
           <li><a href="https://github.com/Fanarii">About Us</a></li>
         </ul>
       </nav>

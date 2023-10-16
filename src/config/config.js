@@ -1,5 +1,5 @@
 const CONFIG = {
-  CACHE_NAME: 'Saan-Mangiare-V2.1-' + Date.now(),
+  CACHE_NAME: 'Saan-Mangiare-V2.2.1',
   DATABASE_NAME: 'restaurant-catalogue-database',
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'restaurant'

@@ -57,6 +57,8 @@ class ContentSection extends HTMLElement {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         max-width: 1000px;
+        justify-items: center;
+        align-items: center;
       }
     
       .card:hover {
@@ -92,7 +94,7 @@ class ContentSection extends HTMLElement {
     
       
     <section class="content">
-        <h1>Discover Caffe & Restaurants</h1>
+        <h1 class="title">Discover Caffe & Restaurants</h1>
         <div class="card-wrapper">
         </div>
     </section>

@@ -9,7 +9,8 @@ const CacheHelper = {
   async deleteOldCaches () {
     const cache = await caches.keys()
     const filteredCaches = cache.filter((name) => name !== CONFIG.CACHE_NAME)
-    filteredCaches.map((filteredCache) => caches.delete(filteredCache))
+    const deleteCahce = filteredCaches.map((filteredCache) => caches.delete(filteredCache))
+    return deleteCahce
   },
 
   async networkFirstCacheStrategy (event) {
