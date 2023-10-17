@@ -11,12 +11,6 @@ class DetailSection extends HTMLElement {
   render () {
     this.shadowDOM.innerHTML = `
     <style>
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
     .restaurant-wrapper {
         display: flex;
         flex-direction: column;
@@ -73,27 +67,6 @@ class DetailSection extends HTMLElement {
         margin: 5px;
         margin-left: 0;
       }
-
-      .customer-reviews {
-        background-color: #f9f9f9;
-        padding: 15px;
-        margin-top: 20px;
-      }
-      
-      .review {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin: 10px 0;
-      }
-      
-      .review-name {
-        font-weight: bold;
-      }
-      
-      .review-date {
-        color: #777;
-      }
-      
       
       @media screen and (max-width: 768px) {
         .restaurant-wrapper {
@@ -121,10 +94,8 @@ class DetailSection extends HTMLElement {
         }
       }
     </style>
-    <div class="container">
       <div class="restaurant-wrapper">
       </div>
-    </div>
     `
   }
 }

@@ -30,17 +30,6 @@ const templateCreator = {
       <h2>Description</h2>
       <p>${restaurant.description}</p>
     </div>
-    <div class="customer-reviews">
-      <h2>Customer Reviews</h2>
-        ${restaurant.customerReviews.map(customerReview => `
-          <div class="review">
-            <p class="review-name">Name: ${customerReview.name}</p>
-            <p class="review-text">Review: ${customerReview.review}</p>
-            <p class="review-date">Date: ${new Date().toLocaleDateString()}</p>
-          </div>`
-        ).join(' ')}
-    </div>
-
     </div>
   </div>
     `
@@ -80,6 +69,18 @@ const templateCreator = {
 
       wrapper.appendChild(card)
     })
+  },
+
+  reviewTemplate (restaurant) {
+    return `
+      ${restaurant.customerReviews.map(customerReview => `
+        <div class="review">
+          <p class="review-name">Name: ${customerReview.name}</p>
+          <p class="review-text">Review: ${customerReview.review}</p>
+          <p class="review-date">Date: ${customerReview.date}</p>
+        </div>`
+      ).join(' ')}
+    `
   }
 }
 
