@@ -1,4 +1,4 @@
-import contentInitiator from '../../utils/contentInitiator'
+import contentHelper from '../../utils/helper/contentHelper'
 
 const Home = {
   async render () {
@@ -9,7 +9,7 @@ const Home = {
   },
 
   afterRender () {
-    contentInitiator.init()
+    contentHelper.init()
   }
 }
 
