@@ -1,5 +1,5 @@
 import axios from 'axios'
-import templateCreator from './templateCreator'
+import templateCreator from '../templateCreator'
 
 const contentInitiator = {
   async init () {

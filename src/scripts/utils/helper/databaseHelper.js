@@ -1,7 +1,7 @@
-import FavoriteRestaurantIdb from '../../public/data/favorite'
-import getRestaurant from './getRestaurant'
-import templateCreator from './templateCreator'
-import Detail from '../view/pages/detail'
+import FavoriteRestaurantIdb from '../../../public/data/favorite'
+import getRestaurant from '../getRestaurant'
+import templateCreator from '../templateCreator'
+import Detail from '../../view/pages/detail'
 
 const DatabaseHelper = {
   async render (id, button) {

@@ -33,6 +33,7 @@ class DetailSection extends HTMLElement {
       
       .title {
         text-align: left;
+        margin-top: 10px;
       }
       
       .title h2 {
@@ -49,7 +50,7 @@ class DetailSection extends HTMLElement {
       }
       
       .info, .desc, .title {
-        margin-top: 20px;
+        margin: 20px;
       }
       
       h2 {
@@ -93,10 +94,6 @@ class DetailSection extends HTMLElement {
         .title img {
           max-height: 480px;
           float: left;
-        }
-      
-        .info, .desc, .container {
-          margin-left: 0;
         }
       }
       
