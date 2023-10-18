@@ -18,9 +18,11 @@ class ReviewSection extends HTMLElement {
 
             input, button {
                 min-width: 100px;
-                min-height: 30px;
+                min-height: 44px;
                 border-radius: 5px;
                 border: none;
+                font-size: 16px;
+                margin: 5px;
             }
 
             button {

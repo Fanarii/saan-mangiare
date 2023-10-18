@@ -48,7 +48,7 @@ class HeroSection extends HTMLElement {
     
     .btn {
         display: inline-block;
-        padding: 10px 20px;
+        padding: 13px 23px;
         background-color: #3BB4C1;
         color: #fff;
         text-decoration: none;
@@ -67,7 +67,7 @@ class HeroSection extends HTMLElement {
     <div class="hero-content">
     <h1>Welcome to Saan Mangiare</h1>
     <p>Discover Caffe & Restaurants</p>
-    <a href="#maincontent" class="btn">Explore</a>
+    <a href="#mainContent" class="btn">Explore</a>
     </div>
 </section>
     `

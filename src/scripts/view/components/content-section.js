@@ -73,12 +73,12 @@ class ContentSection extends HTMLElement {
         flex: 1;
         border: none;
         outline: none;
-        width: 80%;
-        min-height: 20px;
-        padding: 5px;
+        width: 88%;
+        padding: 12px;
         max-width: 700px;
         margin: 10px;
         border-radius: 8px;
+        font-size: 18px;
       }
     
       @media screen and (min-width: 476px) {
