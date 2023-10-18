@@ -22,10 +22,8 @@ const DatabaseHelper = {
       const restaruantExist = await FavoriteRestaurantIdb.getRestaurant(id)
       console.log(restaruantExist)
       if (restaruantExist) {
-        console.log(restaruantExist)
         await FavoriteRestaurantIdb.deleteRestaurant(id)
       } else {
-        console.log('djwoajdow')
         const restaurant = await getRestaurant(id)
         await FavoriteRestaurantIdb.addRestaurant(restaurant)
       }

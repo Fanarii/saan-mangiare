@@ -6,6 +6,7 @@ import './view/components/hero-section.js'
 import './view/components/content-section.js'
 import './view/components/foot-bar.js'
 import './view/components/detail-section.js'
+import './view/components/review-section.js'
 
 import App from './view/app'
 import swRegister from './utils/swRegister'

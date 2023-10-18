@@ -13,36 +13,33 @@ const templateCreator = {
   detailTemplate (restaurant) {
     return `
     <div class="title">
-    <h2>${restaurant.name}</h2>
-    <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="restaurant-image">
-    <div class="categories">
-      ${restaurant.categories.map(category => `<div class="category">${category.name}</div>`).join(' ')}
+      <h2>${restaurant.name}</h2>
+      <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="restaurant-image">
     </div>
-  </div>
-  <div class="content">
     <div class="info">
       <h2>Information</h2>
       <p>City: ${restaurant.city}</p>
       <p>Rating: ${restaurant.rating}</p>
       <p>Address: ${restaurant.address}</p>
+      <p>Categories: ${restaurant.categories.map(category => `<span class="category">${category.name}</span>`).join(' ')} </p>
     </div>
     <div class="desc">
       <h2>Description</h2>
       <p>${restaurant.description}</p>
     </div>
-    <div class="customer-reviews">
-      <h2>Customer Reviews</h2>
-        ${restaurant.customerReviews.map(customerReview => `
-          <div class="review">
-            <p class="review-name">Name: ${customerReview.name}</p>
-            <p class="review-text">Review: ${customerReview.review}</p>
-            <p class="review-date">Date: ${new Date().toLocaleDateString()}</p>
-          </div>`
-        ).join(' ')}
+    <div class="container">
+        <h2>Menu Section</h2>
+        <div class="menus">
+          <ul>
+            <h3>Foods</h3>
+            ${restaurant.menus.foods.map(food => `<li>${food.name}</li>`).join('')}
+          </ul>
+          <ul>
+            <h3>Drinks</h3>
+            ${restaurant.menus.drinks.map(drink => `<li>${drink.name}</li>`).join('')}
+          </ul>
+        </div>
     </div>
-
-    </div>
-  </div>
     `
   },
 
@@ -80,6 +77,18 @@ const templateCreator = {
 
       wrapper.appendChild(card)
     })
+  },
+
+  reviewTemplate (restaurant) {
+    return `
+      ${restaurant.customerReviews.map(customerReview => `
+        <div class="review">
+          <p class="review-name">Name: ${customerReview.name}</p>
+          <p class="review-text">Review: ${customerReview.review}</p>
+          <p class="review-date">Date: ${customerReview.date}</p>
+        </div>`
+      ).join(' ')}
+    `
   }
 }
 

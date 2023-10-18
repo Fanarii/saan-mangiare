@@ -11,21 +11,20 @@ class DetailSection extends HTMLElement {
   render () {
     this.shadowDOM.innerHTML = `
     <style>
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
     .restaurant-wrapper {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+          ". ."
+          ". .";  
+        max-width: 100%;
         padding: 10px;
         background-color: #f7f7f7;
         border: 1px solid #ccc;
         border-radius: 5px;
-        justify-content: start;
       }
       
       .info, .desc {
@@ -42,21 +41,22 @@ class DetailSection extends HTMLElement {
       
       .title img {
         min-width: 50px;
-        max-width: 300px;
+        max-width: 500px;
         height: auto;
         display: block;
         margin: 0 auto;
+        float: left;
       }
       
-      .info, .desc {
+      .info, .desc, .title {
         margin-top: 20px;
       }
       
-      .info h2, .desc h2 {
+      h2 {
         font-size: 20px;
       }
       
-      .info p, .desc p {
+      .info p, .desc p, title p {
         font-size: 16px;
         line-height: 1.5;
       }
@@ -74,26 +74,14 @@ class DetailSection extends HTMLElement {
         margin-left: 0;
       }
 
-      .customer-reviews {
+      .container {
         background-color: #f9f9f9;
         padding: 15px;
-        margin-top: 20px;
       }
-      
-      .review {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin: 10px 0;
+
+      .menus {
+          display: flex;
       }
-      
-      .review-name {
-        font-weight: bold;
-      }
-      
-      .review-date {
-        color: #777;
-      }
-      
       
       @media screen and (max-width: 768px) {
         .restaurant-wrapper {
@@ -102,29 +90,30 @@ class DetailSection extends HTMLElement {
           margin-top: 0
         }
       
-        .title {
-          justify-self: start;
-        }
-      
         .title img {
-          max-height: 300px;
+          max-height: 480px;
+          float: left;
         }
       
-        .info, .desc {
+        .info, .desc, .container {
           margin-left: 0;
         }
       }
       
-      @media screen and (max-width: 575px) {
+      @media screen and (max-width: 400px) {
+        .menus {
+          display: flex;
+          flex-direction: column;
+        }
+
         .title img {
-          
+          max-width: 250px;
         }
       }
     </style>
-    <div class="container">
       <div class="restaurant-wrapper">
       </div>
-    </div>
+
     `
   }
 }
