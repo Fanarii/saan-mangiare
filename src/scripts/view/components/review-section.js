@@ -16,9 +16,18 @@ class ReviewSection extends HTMLElement {
               flex-direction: column;
             }
 
-            form input {
+            input, button {
                 min-width: 100px;
                 min-height: 30px;
+                border-radius: 5px;
+                border: none;
+            }
+
+            button {
+              background-color: #59dfed;
+              border: none;
+              color: white;
+              cursor: pointer;
             }
 
             .reviews {
@@ -28,9 +37,10 @@ class ReviewSection extends HTMLElement {
             }
             
             .review {
-              border: 1px solid #ddd;
               padding: 10px;
               margin: 10px 0;
+              background-color: white;
+              border-radius: 8px;
             }
             
             .review-name {
@@ -44,9 +54,8 @@ class ReviewSection extends HTMLElement {
         <div class="reviews">
           <h2>Customer Reviews</h2>
           <form>
-            
-            <input type="text" placeholder="masukan nama..." class="name-input"/>
-            <input type="text" placeholder="kirim review..." class="review-input"/>
+            <input type="text" placeholder="masukan nama..." class="name-input" required/>
+            <input type="text" placeholder="kirim review..." class="review-input" required/>
             <button type="submit">Kirim</button>
           </form>
           <div class="customer-reviews">

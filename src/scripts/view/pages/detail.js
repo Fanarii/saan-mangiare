@@ -40,8 +40,8 @@ const Detail = {
     const reviewElement = document.querySelector('review-section')
     const wrapper = reviewElement.shadowRoot.querySelector('.customer-reviews')
 
-    const render = () => {
-      wrapper.innerHTML = templateCreator.reviewTemplate(restaurant)
+    const render = (newRestaurant) => {
+      wrapper.innerHTML = templateCreator.reviewTemplate(newRestaurant || restaurant)
     }
     render()
     const nameInput = reviewElement.shadowRoot.querySelector('.name-input')
@@ -49,6 +49,7 @@ const Detail = {
     const form = reviewElement.shadowRoot.querySelector('form')
 
     form.addEventListener('submit', async (e) => {
+      e.preventDefault()
       const dataToSend = {
         id: url.id,
         name: nameInput.value,
@@ -61,7 +62,8 @@ const Detail = {
             'Content-Type': 'application/json'
           }
         })
-        render()
+        const newRestaurant = await getRestaurant(url.id)
+        render(newRestaurant)
       } catch (error) {
         console.error('An error occurred while posting the review:', error)
       }
