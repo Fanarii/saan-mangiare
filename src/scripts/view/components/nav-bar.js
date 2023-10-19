@@ -78,6 +78,20 @@ class NavBar extends HTMLElement {
         background-color: white;
         margin: 3px 0;
       }
+
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        padding: 8px;
+        background-color: #59dfed;
+        color: white;
+        z-index: 999999;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
       
       @media screen and (max-width: 768px) {
         .hamburger {
@@ -114,6 +128,7 @@ class NavBar extends HTMLElement {
     </style>
     
       <nav>
+      <a href="#main-content" class="skip-link">Menuju ke konten</a>
         <div class="nav-wrapper">
           <h1>Saan Mangiare</h1>
           <button class="hamburger">

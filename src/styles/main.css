@@ -6,20 +6,6 @@ body,
   font-family: sans-serif;
 }
 
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  padding: 8px;
-  background-color: #59dfed;
-  color: white;
-  z-index: 100;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
 main {
   display: flex;
   flex-direction: column;
