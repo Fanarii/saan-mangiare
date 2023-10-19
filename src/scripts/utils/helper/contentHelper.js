@@ -9,6 +9,7 @@ const contentInitiator = {
 
       this._handleSearch(searchBar)
       this._renderCards(data)
+      this._handleSkip()
     } catch (error) {
       console.log(error)
     }
@@ -52,6 +53,13 @@ const contentInitiator = {
       const response = await axios.get(`https://restaurant-api.dicoding.dev/search?q=${searchBar.value}`)
       this._renderCards(response.data.restaurants)
     })
+  },
+
+  _handleSkip () {
+    const navbar = document.querySelector('nav-bar')
+    const skipButton = navbar.shadowRoot.querySelector('.skip-link')
+
+    skipButton.setAttribute('href', '#main-content')
   }
 }
 

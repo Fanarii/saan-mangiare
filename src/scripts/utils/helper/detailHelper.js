@@ -51,7 +51,28 @@ const DetailHelper = {
     likeButtonContainer.addEventListener('click', async () => {
       await DatabaseHelper.handleFavorite(id, likeButtonContainer)
     })
+  },
+
+  handleHeader (id) {
+    // Skip to content
+    const mainContent = document.getElementById('main-content')
+
+    const navbar = document.querySelector('nav-bar')
+    const skipButton = navbar.shadowRoot.querySelector('.skip-link')
+    skipButton.addEventListener('click', (event) => {
+      event.preventDefault()
+
+      mainContent.focus()
+      mainContent.scrollIntoView({ behavior: 'smooth' })
+    })
+
+    // Hero section
+    const hero = document.querySelector('hero-section')
+    const main = document.querySelector('main')
+    main.style.marginTop = '60px'
+    hero.style.display = 'none'
   }
+
 }
 
 export default DetailHelper
