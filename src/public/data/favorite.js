@@ -10,8 +10,10 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
 })
 
 const FavoriteRestaurantIdb = {
-  async getRestaurant (id) {
-    return (await dbPromise).get(OBJECT_STORE_NAME, id)
+  async getFavoriteRestaurant (id) {
+    if (!id) return
+    const result = (await dbPromise).get(OBJECT_STORE_NAME, id)
+    return result
   },
 
   async getAllRestaurants () {
@@ -19,7 +21,8 @@ const FavoriteRestaurantIdb = {
   },
 
   async addRestaurant (restaurant) {
-    return (await dbPromise).add(OBJECT_STORE_NAME, restaurant)
+    console.log(restaurant)
+    return (await dbPromise).put(OBJECT_STORE_NAME, restaurant)
   },
 
   async putRestaurant (restaurant) {
