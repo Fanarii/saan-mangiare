@@ -1,12 +1,9 @@
 import axios from 'axios'
 import templateCreator from '../templateCreator'
 
-const contentInitiator = {
-  async init () {
+const ContentInitiator = {
+  init ({ data, searchBar }) {
     try {
-      const data = await this._getData()
-      const searchBar = this._getSerchBar()
-
       this._handleSearch(searchBar)
       this._renderCards(data)
       this._handleSkip()
@@ -15,26 +12,11 @@ const contentInitiator = {
     }
   },
 
-  async _getData () {
-    try {
-      const response = await axios.get('https://restaurant-api.dicoding.dev/list')
-      return response.data.restaurants
-    } catch (error) {
-      console.log(error)
-      return []
-    }
-  },
-
-  _getSerchBar () {
-    const element = document.querySelector('content-section')
-    const searchBar = element.shadowRoot.querySelector('.search')
-    return searchBar
-  },
-
   async _renderCards (data) {
     const contentSection = document.querySelector('content-section')
     const wrapper = contentSection.shadowRoot.querySelector('.card-wrapper')
     wrapper.innerHTML = ''
+    console.log(data)
 
     data.forEach((item) => {
       const card = document.createElement('button')
@@ -49,6 +31,7 @@ const contentInitiator = {
   },
 
   _handleSearch (searchBar) {
+    console.log(searchBar)
     searchBar.addEventListener('keyup', async () => {
       const response = await axios.get(`https://restaurant-api.dicoding.dev/search?q=${searchBar.value}`)
       this._renderCards(response.data.restaurants)
@@ -63,4 +46,4 @@ const contentInitiator = {
   }
 }
 
-export default contentInitiator
+export default ContentInitiator

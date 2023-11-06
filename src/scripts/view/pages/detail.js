@@ -1,6 +1,7 @@
 import UrlParser from '../../routes/urlParser'
 import getRestaurant from '../../utils/getRestaurant'
-import DetailHelper from '../../utils/helper/detailHelper'
+import DetailInitiator from '../../utils/helper/detailInitiator'
+import likeButtonPresenter from '../../utils/likeButtonPresenter'
 
 const Detail = {
   async render () {
@@ -16,11 +17,13 @@ const Detail = {
   async afterRender () {
     const url = UrlParser.parseActiveUrlWithoutCombiner()
     const id = url.id
+    const likeButtonContainer = document.body.querySelector('#likeButtonContainer')
+    const element = document.querySelector('detail-section')
+    const wrapper = element.shadowRoot.querySelector('.restaurant-wrapper')
     const restaurant = await getRestaurant(id)
 
-    DetailHelper.handleHeader(id)
-    DetailHelper.handleFavorite(restaurant, id)
-    DetailHelper.handleReview(restaurant, id)
+    DetailInitiator.init({ id, wrapper })
+    likeButtonPresenter.init({ restaurant, restoId: id, likeButtonContainer })
   }
 }
 
