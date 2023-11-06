@@ -1,10 +1,17 @@
 import axios from 'axios'
 import getRestaurant from '../getRestaurant'
 import templateCreator from '../templateCreator'
-import DatabaseHelper from './databaseHelper'
 
-const DetailHelper = {
-  async handleReview (restaurant, id) {
+const DetailInitiator = {
+  async init ({ id, wrapper }) {
+    const restaurant = await this._getRestaurant(id)
+    wrapper.innerHTML = templateCreator.detailTemplate(restaurant)
+
+    this._handleReview(restaurant, id)
+    this._handleHeader(id)
+  },
+
+  async _handleReview (restaurant, id) {
     const reviewElement = document.querySelector('review-section')
     const wrapper = reviewElement.shadowRoot.querySelector('.customer-reviews')
 
@@ -40,20 +47,7 @@ const DetailHelper = {
     })
   },
 
-  async handleFavorite (restaurant, id) {
-    const element = document.querySelector('detail-section')
-    const wrapper = element.shadowRoot.querySelector('.restaurant-wrapper')
-    wrapper.innerHTML = templateCreator.detailTemplate(restaurant)
-
-    const likeButtonContainer = document.querySelector('#likeButtonContainer')
-    DatabaseHelper.render(id, likeButtonContainer)
-
-    likeButtonContainer.addEventListener('click', async () => {
-      await DatabaseHelper.handleFavorite(id, likeButtonContainer)
-    })
-  },
-
-  handleHeader (id) {
+  _handleHeader () {
     // Skip to content
     const mainContent = document.getElementById('main-content')
 
@@ -71,8 +65,16 @@ const DetailHelper = {
     const main = document.querySelector('main')
     main.style.marginTop = '60px'
     hero.style.display = 'none'
-  }
+  },
 
+  async _getRestaurant (id) {
+    try {
+      const restaurant = await axios.get(`https://restaurant-api.dicoding.dev/detail/${id}`)
+      return restaurant.data.restaurant
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
-export default DetailHelper
+export default DetailInitiator
